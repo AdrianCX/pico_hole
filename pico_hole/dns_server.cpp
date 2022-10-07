@@ -55,14 +55,14 @@ extern "C" bool start_dns_server()
     err_t err = udp_bind(&downstream_pcb, &any_addr, 53);
     if (err != 0)
     {
-        log("Failed binding downdstream on port 53, error: %d\r\n", err);
+        log("Failed binding downstream on port 53, error: %d\r\n", err);
         return false;
     }
     
     err = udp_bind(&upstream_pcb, &any_addr, 5353);
     if (err != 0)
     {
-        log("Failed binding downdstream on port 53, error: %d\r\n", err);
+        log("Failed binding upstream on port 5353, error: %d\r\n", err);
         return false;
     }
 

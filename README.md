@@ -48,6 +48,23 @@ cmake ..
 make
 ```
 
+### Logs
+
+1. Simple one line to always connect when pico starts up:
+```
+while true; do minicom -b 115200 -o -D /dev/ttyACM0; done
+```
+
+2.2. If you want udp logs
+```
+pico_hole/config/lwipopts_common.h
+```
+```
+#define LWIP_DEBUG 1
+#define UDP_DEBUG                   LWIP_DBG_ON
+```
+
+
 #### Copy firmware to pico
 
 Bootup raspberry pi pico in bootsel mode and mount it.
