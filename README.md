@@ -10,7 +10,17 @@ How it looks
 
 ### How to use
 
+#### Possible issues
+
+- Pico wireless connection might seem unstable
+
+Ping works on and off (10 seconds yes, 10 seconds no), requests sometimes time out.
+Avoided on my setup by setting "DTIM Interval", "Delivery Traffic Indication Message Interval" to 1 on my router.
+This was an issue with micropython, did not check if it's solved or if it even appears on C++ variant, so note might be out of date.
+
 #### Configure wifi credentials and compile.
+
+On Windows you can use docker, WSL is also great with 'ubuntu' from store.
 
 1. Install pico dependencies
 ```
