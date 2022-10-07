@@ -1,18 +1,13 @@
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
- 
-#include "lwip/apps/lwiperf.h"
 #include "lwip/ip4_addr.h"
-#include "lwip/netif.h"
  
-#include "hardware/structs/rosc.h"
+#include <map>
 
 #include "dns.h"
 #include "mappings.h"
+
 #include "wifi.h"
-
-#include <map>
-
 #include "dns_server.h"
 
 #define log printf
@@ -165,6 +160,7 @@ void cleanup_requests()
 
     if (current_time - last_update >= TIMEOUT_DNS_REQUEST/2)
     {
+        last_update = current_time;
         for (auto it=m_active_requests.begin();it!=m_active_requests.end();)
         {
             if (current_time - it->second.m_timestamp >= TIMEOUT_DNS_REQUEST)

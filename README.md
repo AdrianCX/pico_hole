@@ -48,6 +48,11 @@ cmake ..
 make
 ```
 
+for release build use this instead of cmake ..
+```
+cmake -DCMAKE_BUILD_TYPE=Release ../
+```
+
 ### Logs
 
 1. Simple one line to always connect when pico starts up:
