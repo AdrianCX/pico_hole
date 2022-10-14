@@ -1,24 +1,29 @@
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
 
+// Nice lists: https://raw.githubusercontent.com/JO2EY/Rules/master/Surge/RULE-SET/Streaming.list
+
 const char *allowed_patterns[] = {
     "netflix.com.", // Netflix domains below
+    "netflix.net.",
     "nflxext.com.",
     "nflximg.com.",
+    "nflximg.net.",
     "nflxso.net.",
     "nflxvideo.net.",
-    "netflix.net.",
     "disneyplus.com.", // Disney+ domains below
+    "disney-plus.net.",
+    "disneystreaming.com.",
+    "dssott.com.",
     "bamgrid.com.",
-    "bam.nr-data.net.",
     "cdn.registerdisney.go.com.",
+    "bam.nr-data.net.",
     "disney-portal.my.onetrust.com.",
     "disneyplus.bn5x.net.",
-    "disney-plus.net.",
-    "dssott.com.",
     "starott.com.",
     "adobedtm.com.",
-    "cws.conviva.com.",
+    "conviva.com.",
+    "x.ss2.us.",
     "js-agent.newrelic.com.",
     "d9.flashtalking.com.",
     "disney.co.jp.",
@@ -28,7 +33,6 @@ const char *allowed_patterns[] = {
     "amazontrust.com.",
     "comodoca.com.",
     "usertrust.com.",
-    "crl.sectigo.com.",
     "mediaservices.cdn-apple.com.",
     "digicert.com.",
     "mzstatic.com.",
@@ -94,14 +98,6 @@ bool ends_with(const char *str, const char *suffix)
 
 extern "C" bool check_dns_name(int id, const char *name)
 {
-    for (int i=0;i<ignore_print_size;++i)
-    {
-        if (strstr(name, ignore_print[i])!=NULL)
-        {
-            return false;
-        }
-    }
-        
     for (int i=0;i<allowed_patterns_size;++i)
     {
         if (ends_with(name, allowed_patterns[i]))
@@ -110,6 +106,15 @@ extern "C" bool check_dns_name(int id, const char *name)
             return true;
         }
     }
+
+    for (int i=0;i<ignore_print_size;++i)
+    {
+        if (strstr(name, ignore_print[i])!=NULL)
+        {
+            return false;
+        }
+    }
+
     printf("[%d] Rejecting: %s\r\n", id, name);
     return false;
 }

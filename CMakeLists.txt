@@ -30,3 +30,4 @@ add_compile_options(-O2 -march=armv6-m -mcpu=cortex-m0plus
 
 add_subdirectory(pico_dns)
 add_subdirectory(pico_hole)
+add_subdirectory(random_leds)
