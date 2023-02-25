@@ -34,7 +34,7 @@ git submodule update --init --recursive
 
 3. Configure wifi in example (otherwise it won't connect):
 ```
-hello_world/config/wifi.h
+pico_hole/config/wifi.h
 ```
 
 4. Compile
