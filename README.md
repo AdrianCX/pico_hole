@@ -5,6 +5,8 @@ This currently blocks all domains except those used by netflix/disney+.
 
 Reason for this is the content monitoring and built in ads on my samsung TV.
 
+Same result running in a container: https://github.com/AdrianCX/pico_pc
+
 How it looks
 ![Alt text](/documentation/pico_front.jpg "")
 
